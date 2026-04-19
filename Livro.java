@@ -14,21 +14,21 @@ public class Livro {
     }
 
     public boolean isDisponivel(){
-
-        if(qtd >= 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return qtd >= 1;
     }
 
     public void emprestarLivro(){
-        qtd--;
+        if (qtd > 0) {
+            qtd--;
+            emprestado++;
+        }
     }
 
     public void devolverLivro(){
         qtd++;
+        if (emprestado > 0) {
+            emprestado--;
+        }
     }
 
     public String getTitulo() {
@@ -73,6 +73,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return (" Há " + qtd + " unidades do livro " + titulo + " do autor " + autor + " em estoque");
+        return (" Hah " + qtd + " unidades do livro " + titulo + " do autor " + autor + " em estoque");
     }
 }
