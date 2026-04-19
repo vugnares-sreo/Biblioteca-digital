@@ -10,30 +10,24 @@ public class Leitor{
     }
 
     public void emprestarLivro(Livro livro){
-        if(livro.isDisponivel()){            
+        if(livro.isDisponivel()){
             livro.emprestarLivro();
             this.livroAlugas = livro;
-            
             System.out.println("O livro " + livro.getTitulo() + " foi alugado com sucesso! " + Usuario);
-        }
-    
-        else {
+        } else {
             System.out.println("Este livro nao esta disponivel para emprestimo");
         }
-}
+    }
 
-    
     public void devolverLivro(){
         if(livroAlugas != null){
-        
             livroAlugas.devolverLivro();
-
-            System.out.println("O livro " + livroAlugas.getTitulo() + " foi devolvido com sucesso, " + Usuario + "! " );
+            System.out.println("O livro " + livroAlugas.getTitulo() + " foi devolvido com sucesso, " + Usuario + "! ");
             this.livroAlugas = null;
         }
     }
 
-        public String getUsuario() {
+    public String getUsuario() {
         return Usuario;
     }
 
