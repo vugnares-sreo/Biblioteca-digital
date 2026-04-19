@@ -86,7 +86,7 @@ import java.util.ArrayList;
         return (Biblioteca) ois.readObject();
     } catch (IOException | ClassNotFoundException e) {
         System.err.println("Erro ao carregar biblioteca: " + e.getMessage());
-        return new Biblioteca(); // se não existir, cria uma nova viu Phillipe
+        return new Biblioteca();
     }
     }
 }
