@@ -1,44 +1,54 @@
 @startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
 
-' Classes e atributos 
+' ==================== CLASSES ====================
 class Livro {
-    - titulo : String
-    - autor : String
-    - isbn : long
-    - qtd : int
-    - emprestado : int
+  - titulo : String
+  - autor : String
+  - isbn : long
+  - quantidade : int
+  - emprestados : int
+  + emprestar() : boolean
+  + devolver() : void
 }
 
 class Leitor {
-    - Usuario : String
-    - ID : int
-    - livroAlugas : Livro
+  - nomeUsuario : String
+  - id : int
+  - livrosEmprestados : List<Livro>
+  + pegarLivro(livro : Livro) : void
+  + devolverLivro(livro : Livro) : void
 }
 
 class Biblioteca {
-    ' sem atributos definidos
+  - livros : List<Livro>
+  - leitores : List<Leitor>
+  + cadastrarLivro(livro : Livro) : void
+  + cadastrarLeitor(leitor : Leitor) : void
+  + buscarLivroPorTitulo(titulo : String) : Livro
+  + listarLivrosDisponiveis() : List<Livro>
 }
 
-class Catalago extends JFrame {
-    ' interface gráfica do catálogo
+class Login extends JFrame {
+  ' Tela de login do sistema
 }
 
 class Principal extends JFrame {
-    ' interface gráfica principal
+  ' Tela principal do sistema
 }
 
 class Main {
-    + main(args : String[]) : void
+  + main(args : String[]) : void
 }
 
-' Heranças
-Catalago --|> JFrame
-Principal --|> JFrame
-
-' Associações
-Leitor --> Livro
-Main --> Principal
-Biblioteca --> Livro
-Biblioteca --> Leitor
+' ==================== RELACIONAMENTOS ====================
+Biblioteca "1" *-- "muitos" Livro : contém
+Biblioteca "1" *-- "muitos" Leitor : gerencia
+Leitor "1" --> "0..muitos" Livro : possui emprestado
+Main --> Login : inicia
+Login --> Principal : abre após login
+Principal --> Biblioteca : usa
 
 @enduml
