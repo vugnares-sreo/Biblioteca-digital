@@ -53,7 +53,7 @@ public class Biblioteca{
         System.out.println("Total de livros emprestados: " + totalEmprestados);
     }
 
-    public static void gerarRelatorioUsuariosAtivos() {
+    public void gerarRelatorioUsuariosAtivos() {
         ativos = 0;
         System.out.println("=== Usuários Ativos ===");
 
