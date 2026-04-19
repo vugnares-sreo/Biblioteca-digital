@@ -33,4 +33,4 @@ Projeto acadêmico desenvolvido no IFRN em trabalho colaborativo.
 
 # Preview
 
-![Visão geral](assets/geral.png)       ![escolhas](assets/escolha.png)
+![Visão geral](assets/geral.png) ![escolhas](assets/escolha.png)
