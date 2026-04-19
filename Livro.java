@@ -31,8 +31,6 @@ public class Livro {
         qtd++;
     }
 
-    //getter e setters
-
     public String getTitulo() {
         return titulo;
     }
