@@ -1,112 +1,91 @@
-import java.util.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class Main{
+public class Main extends JFrame {
+
+    Biblioteca biblioteca = new Biblioteca();
+
+    JPanel panelRaiz = new JPanel();
+    JPanel panelBotoes = new JPanel();
+
+    JLabel mensagem = new JLabel("Bem-vindo à Biblioteca!");
+    JButton alugarLivro = new JButton("Alugar um livro");
+    JButton catalagoLivro = new JButton("Mostrar catálogo");
+    JButton btnDevolverLivro = new JButton("Devolver livro");
+    JButton btnCadastrarLivro = new JButton("Cadastrar livro");
+
+    public Principal() {
+
+        // Dados iniciais (pra GUI não ficar vazia)
+        biblioteca.addLivro(new Livro("Java Básico", "Autor 1", 123, 3));
+        biblioteca.addLivro(new Livro("POO na Prática", "Autor 2", 456, 2));
+
+        defBotao();
+        addListeners();
+        defPainel();
+        defTela();
+    }
+
+    public void defTela() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(600, 200);
+        setResizable(false);
+        setTitle("Ler é cool");
+        add(panelRaiz);
+        setVisible(true);
+    }
+
+    public void defBotao() {
+        Dimension tam = new Dimension(140, 30);
+        alugarLivro.setPreferredSize(tam);
+        catalagoLivro.setPreferredSize(tam);
+        btnDevolverLivro.setPreferredSize(tam);
+        btnCadastrarLivro.setPreferredSize(tam);
+    }
+
+    public void defPainel() {
+        panelRaiz.setLayout(new BoxLayout(panelRaiz, BoxLayout.Y_AXIS));
+
+        panelBotoes.setLayout(new BoxLayout(panelBotoes, BoxLayout.X_AXIS));
+        panelBotoes.setOpaque(false);
+
+        panelBotoes.add(alugarLivro);
+        panelBotoes.add(Box.createRigidArea(new Dimension(10, 0)));
+        panelBotoes.add(catalagoLivro);
+        panelBotoes.add(Box.createRigidArea(new Dimension(10, 0)));
+        panelBotoes.add(btnDevolverLivro);
+        panelBotoes.add(Box.createRigidArea(new Dimension(10, 0)));
+        panelBotoes.add(btnCadastrarLivro);
+
+        panelBotoes.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mensagem.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panelRaiz.add(Box.createVerticalStrut(30));
+        panelRaiz.add(mensagem);
+        panelRaiz.add(Box.createVerticalStrut(30));
+        panelRaiz.add(panelBotoes);
+        panelRaiz.add(Box.createVerticalGlue());
+    }
+
+    public void addListeners() {
+        alugarLivro.addActionListener(_ -> {
+            System.out.println("Botão 'Alugar um livro' clicado!");
+        });
+
+        catalagoLivro.addActionListener(_ -> {
+            new Catalago(biblioteca);
+        });
+
+        btnDevolverLivro.addActionListener(_ -> {
+            JOptionPane.showMessageDialog(this, "Funcionalidade de devolução ainda não implementada.");
+        });
+
+        btnCadastrarLivro.addActionListener(_ -> {
+            JOptionPane.showMessageDialog(this, "Funcionalidade de cadastro ainda não implementada.");
+        });
+    }
+
     public static void main(String[] args) {
-
-        int id = 2;
-        Biblioteca biblioteca = new Biblioteca();
-        Scanner S = new Scanner(System.in);
-
-        biblioteca.addLivro(new Livro("Um conto de Natal", "Charles Dickens", 978042, 5));
-        biblioteca.addLivro(new Livro("O Capital", "Karl Marx", 978332, 6));
-        biblioteca.addLeitor(new Leitor("Endrel", 0));
-        biblioteca.addLeitor(new Leitor("Antonio", 1));
-        
-
-        while(true){
-
-            System.out.println("\nSelecione a opcao desejada:");
-            System.out.println("1 - Alugar um Livro;");
-            System.out.println("2 - Devolver um Livro;");
-            System.out.println("3 - Exibir catalogo;");
-            System.out.println("4 - Gerar Relatórios;\n");
-
-            int a = S.nextInt();
-
-            if (a == 1){
-                S.nextLine();
-                
-                System.out.println("Escreva seu nome:");
-                String leitorAblible = S.nextLine(); 
-                
-                Leitor leitor = biblioteca.pesquisarLeitor(leitorAblible);
-
-                if (leitor != null){
-                    
-                    System.out.println("\nBem vindo " + leitorAblible + "! Escreva o título que deseja alugar:\n");
-                    String livroAblible = S.nextLine();
-                    Livro livro = biblioteca.pesquisarLivro(livroAblible);
-
-                    if(livro != null){
-                        leitor.emprestarLivro(livro);
-                    }
-
-                    else{
-                        System.out.println("\nLivro não encontrado!");
-                    }
-                }
-
-                else {
-                    System.out.println("\nUsuário não encontrado. Cadastrando...\n");
-
-                    leitor = new Leitor(leitorAblible, id);
-                    biblioteca.addLeitor(leitor);
-                    id++;
-
-                    System.out.println("Bem vindo " + leitorAblible + "! Escreva o título que deseja alugar:");
-                    String livroAblible = S.nextLine();
-                    Livro livro = biblioteca.pesquisarLivro(livroAblible);
-
-                    if(livro != null){
-                        leitor.emprestarLivro(livro);
-                    }
-                    else{
-                        System.out.println("Livro não encontrado!");
-                    }
-                }
-            }
-
-            else if (a == 2){
-                S.nextLine();
-                System.out.println("\nEscreva seu nome:");
-                String leitorAblible = S.nextLine();
-                Leitor leitor = biblioteca.pesquisarLeitor(leitorAblible);
-
-                if (leitor != null) {
-                    leitor.devolverLivro();
-                    System.out.println("\nDevolução realizada com sucesso!");
-                }
-                else{
-                    System.out.println("\nUsuario nao encontrado!");
-                }
-            }
-
-            else if(a == 3){
-                System.out.println("Catálogo de Livros:");
-                for (Livro livro : biblioteca.getLivros()) {
-                    System.out.println(livro);
-                }
-
-                System.out.println("Lista de Leitores:");
-                for (Leitor leitor : biblioteca.getLeitores()) {
-                    System.out.println(leitor);  
-                
-                }
-            }
-
-            else if (a == 4) {
-                biblioteca.gerarRelatorioLivrosEmprestados();
-                biblioteca.gerarRelatorioUsuariosAtivos();
-            }
-
-            else if(a == 0){
-                break;
-            }
-
-            else{
-                System.out.println("Comando invalido!");
-            }
-        }
-        S.close();
+        new Main();
     }
 }
