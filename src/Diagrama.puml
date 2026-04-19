@@ -3,7 +3,7 @@ skinparam classAttributeIconSize 0
 skinparam monochrome true
 skinparam shadowing false
 
-' ==================== CLASSES ====================
+' Classes
 class Livro {
   - titulo : String
   - autor : String
@@ -43,7 +43,7 @@ class Main {
   + main(args : String[]) : void
 }
 
-' ==================== RELACIONAMENTOS ====================
+' Relacionamentos
 Biblioteca "1" *-- "muitos" Livro : contém
 Biblioteca "1" *-- "muitos" Leitor : gerencia
 Leitor "1" --> "0..muitos" Livro : possui emprestado
