@@ -1,15 +1,13 @@
 import java.util.*;
 
 public class Biblioteca{
-    private ArrayList<Leitor> leitores;
-    private ArrayList<Livro> livros;
+    ArrayList<Leitor> leitores;
+    ArrayList<Livro> livros;
     static int ativos;
-
 
     public Biblioteca(){
         livros = new ArrayList<Livro>();
         leitores = new ArrayList<Leitor>();
-        
     }
 
     public void addLivro(Livro livro){
@@ -39,10 +37,10 @@ public class Biblioteca{
     }
 
     public void gerarRelatorioLivrosEmprestados() {
-    int totalEmprestados = 0;
-    System.out.println("=== Livros Emprestados ===");
+        int totalEmprestados = 0;
+        System.out.println("=== Livros Emprestados ===");
 
-    for (Livro livro : livros) {
+        for (Livro livro : livros) {
             int emprestados = livro.getEmprestado();
             if (emprestados > 0) {
                 System.out.println(livro.getTitulo() + ": " + emprestados + " emprestado(s)");
@@ -53,7 +51,8 @@ public class Biblioteca{
         System.out.println("Total de livros emprestados: " + totalEmprestados);
     }
 
-    public void gerarRelatorioUsuariosAtivos() {
+    // Mantido static, mas agora recebe a lista corretamente
+    public static void gerarRelatorioUsuariosAtivos(ArrayList<Leitor> leitores) {
         ativos = 0;
         System.out.println("=== Usuários Ativos ===");
 
@@ -65,7 +64,7 @@ public class Biblioteca{
         }
 
         System.out.println("Total de usuários ativos: " + ativos);
-    }   
+    }
 
     public void setLeitores(ArrayList<Leitor> leitores){
         this.leitores = leitores;
@@ -76,10 +75,10 @@ public class Biblioteca{
     }
 
     public ArrayList<Livro> getLivros(){
-        return livros;       
+        return livros;
     }
 
     public ArrayList<Leitor> getLeitores(){
-        return leitores;       
+        return leitores;
     }
 }
