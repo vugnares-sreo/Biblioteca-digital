@@ -14,12 +14,10 @@ public class Biblioteca{
 
     public void addLivro(Livro livro){
         livros.add(livro);
-        //System.out.println(livro + " foi adicionado ao catalogo com sucesso!");
     }
 
     public void addLeitor(Leitor leitor){
         leitores.add(leitor);
-        //System.out.println(leitor + " foi cadastrado com sucesso!");
     }
 
     public Livro pesquisarLivro(String titulo){
@@ -39,8 +37,6 @@ public class Biblioteca{
         }
         return null;
     }
-
-    //Vi agora que precisa disso, nam
 
     public void gerarRelatorioLivrosEmprestados() {
     int totalEmprestados = 0;
@@ -70,9 +66,6 @@ public class Biblioteca{
 
         System.out.println("Total de usuários ativos: " + ativos);
     }   
-
-
-    //Metodos get set
 
     public void setLeitores(ArrayList<Leitor> leitores){
         this.leitores = leitores;
