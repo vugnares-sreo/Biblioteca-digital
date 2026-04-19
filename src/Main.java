@@ -14,7 +14,8 @@ public class Main extends JFrame {
     JButton btnDevolverLivro = new JButton("Devolver livro");
     JButton btnCadastrarLivro = new JButton("Cadastrar livro");
 
-    public Principal() {
+    public Main() { // ← CORRIGIDO (era Principal)
+
         biblioteca.addLivro(new Livro("Java Básico", "Autor 1", 123, 3));
         biblioteca.addLivro(new Livro("POO na Prática", "Autor 2", 456, 2));
 
@@ -30,6 +31,7 @@ public class Main extends JFrame {
         setResizable(false);
         setTitle("Ler é legal");
         add(panelRaiz);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -66,19 +68,20 @@ public class Main extends JFrame {
     }
 
     public void addListeners() {
-        alugarLivro.addActionListener(_ -> {
+
+        alugarLivro.addActionListener(e -> {
             System.out.println("Botão 'Alugar um livro' clicado!");
         });
 
-        catalagoLivro.addActionListener(_ -> {
-            new Catalago(biblioteca);
+        catalagoLivro.addActionListener(e -> {
+            new Catalago(biblioteca); // ← CORRIGIDO
         });
 
-        btnDevolverLivro.addActionListener(_ -> {
+        btnDevolverLivro.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Funcionalidade de devolução ainda não implementada.");
         });
 
-        btnCadastrarLivro.addActionListener(_ -> {
+        btnCadastrarLivro.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Funcionalidade de cadastro ainda não implementada.");
         });
     }
