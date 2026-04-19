@@ -1,5 +1,3 @@
-package logica;
-
 import java.util.*;
 
 public class Biblioteca{
