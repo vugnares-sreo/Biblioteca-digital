@@ -10,7 +10,7 @@ public class Main{
         biblioteca.addLivro(new Livro("Um conto de Natal", "Charles Dickens", 978042, 5));
         biblioteca.addLivro(new Livro("O Capital", "Karl Marx", 978332, 6));
         biblioteca.addLeitor(new Leitor("Endrel", 0));
-        biblioteca.addLeitor(new Leitor("Antoin", 1));
+        biblioteca.addLeitor(new Leitor("Antonio", 1));
         
 
         while(true){
