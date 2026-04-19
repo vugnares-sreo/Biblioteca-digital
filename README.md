@@ -22,8 +22,8 @@ Sistema de gerenciamento de biblioteca desenvolvido em Java, com foco em organiz
 Aplicar conceitos de programação orientada a objetos na construção de um sistema organizado e funcional para gerenciamento de biblioteca.
 
 ## Execução
-1. Compile os arquivos Java
-2. Execute a classe principal
+javac *.java  
+java Main
 
 ## Contexto
 Projeto acadêmico desenvolvido no IFRN em trabalho colaborativo.
