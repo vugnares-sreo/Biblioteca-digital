@@ -28,3 +28,9 @@ Aplicar conceitos de programação orientada a objetos na construção de um sis
 
 ## Contexto
 Projeto acadêmico desenvolvido no IFRN em trabalho colaborativo.
+
+--
+
+# Preview
+
+[Visão geral](assets/geral.png)   
