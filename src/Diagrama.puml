@@ -1,54 +1,89 @@
 @startuml
-skinparam classAttributeIconSize 0
-skinparam monochrome true
-skinparam shadowing false
 
-' Classes
+class Biblioteca {
+    - livros : ArrayList<Livro>
+    - leitores : ArrayList<Leitor>
+
+    + addLivro(l : Livro) : void
+    + addLeitor(l : Leitor) : void
+    + pesquisarLivro(titulo : String) : Livro
+    + pesquisarLeitor(nome : String) : Leitor
+    + pesquisarLeitorPorID(id : int) : Leitor
+    + getLivros() : ArrayList<Livro>
+    + getLeitores() : ArrayList<Leitor>
+    + gerarRelatorioLivrosEmprestados() : void
+    + gerarRelatorioUsuariosAtivos() : void
+    + salvarBiblioteca(caminho : String) : void
+    + carregarBiblioteca(caminho : String) : Biblioteca
+}
+
 class Livro {
-  - titulo : String
-  - autor : String
-  - isbn : long
-  - quantidade : int
-  - emprestados : int
-  + emprestar() : boolean
-  + devolver() : void
+    - titulo : String
+    - autor : String
+    - isbn : long
+    - qtd : int
+    - emprestado : int
+
+    + isDisponivel() : boolean
+    + emprestarLivro() : void
+    + devolverLivro() : void
+    + getTitulo() : String
+    + getAutor() : String
+    + getIsbn() : long
+    + getQtd() : int
+    + getEmprestado() : int
+    + setTitulo(t : String) : void
+    + setAutor(a : String) : void
+    + setIsbn(i : long) : void
+    + setQtd(q : int) : void
+    + setEmprestado(e : int) : void
+    + toString() : String
 }
 
 class Leitor {
-  - nomeUsuario : String
-  - id : int
-  - livrosEmprestados : List<Livro>
-  + pegarLivro(livro : Livro) : void
-  + devolverLivro(livro : Livro) : void
+    - usuario : String
+    - ID : int
+    - livrosAlugados : ArrayList<Livro>
+
+    + emprestarLivro(l : Livro) : void
+    + devolverLivro(titulo : String) : boolean
+    + getLivrosAlugados() : ArrayList<Livro>
+    + getUsuario() : String
+    + getID() : int
+    + toString() : String
 }
 
-class Biblioteca {
-  - livros : List<Livro>
-  - leitores : List<Leitor>
-  + cadastrarLivro(livro : Livro) : void
-  + cadastrarLeitor(leitor : Leitor) : void
-  + buscarLivroPorTitulo(titulo : String) : Livro
-  + listarLivrosDisponiveis() : List<Livro>
+class Login {
+    - txtUsuario : JTextField
+    - txtID : JTextField
+    - btnLogin : JButton
+    - biblioteca : Biblioteca
+
+    + Login()
+    - fazerLogin() : void
+    - carregarLivrosExistentes() : void
+    + main(args : String[]) : void
 }
 
-class Login extends JFrame {
-  ' Tela de login do sistema
+class Principal {
+    - biblioteca : Biblioteca
+    - leitor : Leitor
+
+    + Principal(b : Biblioteca, l : Leitor)
+    - cadastrarLivro() : void
 }
 
-class Principal extends JFrame {
-  ' Tela principal do sistema
-}
+' RELACIONAMENTOS
 
-class Main {
-  + main(args : String[]) : void
-}
+Biblioteca "1" *-- "*" Livro
+Biblioteca "1" *-- "*" Leitor
 
-' Relacionamentos
-Biblioteca "1" *-- "muitos" Livro : contém
-Biblioteca "1" *-- "muitos" Leitor : gerencia
-Leitor "1" --> "0..muitos" Livro : possui emprestado
-Main --> Login : inicia
-Login --> Principal : abre após login
-Principal --> Biblioteca : usa
+Leitor "1" --> "*" Livro : aluga
+
+Login --> Biblioteca
+Principal --> Biblioteca
+Principal --> Leitor
+
+Login --> Principal
 
 @enduml
