@@ -2,28 +2,28 @@ import javax.swing.*;
 
 public class Catalago extends JFrame {
 
-    Biblioteca biblioteca = new Biblioteca();
-    JLabel livros = new JLabel("Livros:");
-    
+    Biblioteca biblioteca;
 
-    public Catalago() {
-        
+    public Catalago(Biblioteca biblioteca) {
+
+        this.biblioteca = biblioteca;
+
         setTitle("Catálogo de Livros");
-        setVisible(true);
         setSize(200, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        biblioteca.addLivro();
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
         Lista();
+
+        setVisible(true);
     }
 
     public void Lista(){
-        
         for (Livro livro : biblioteca.getLivros()) {
-            new JLabel("bruh");
+            add(new JLabel(livro.getTitulo()));
         }
-
     }
 }
