@@ -6,7 +6,7 @@ import java.awt.*;
         private Leitor leitor;
 
     public Principal(Biblioteca biblioteca, Leitor leitor) {
-        super("Biblioteca Yoshikage Kira");
+        super("Biblioteca Machado de Assis");
 
         this.biblioteca = biblioteca;
         this.leitor = leitor;
