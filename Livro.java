@@ -73,6 +73,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return (" Hah " + qtd + " unidades do livro " + titulo + " do autor " + autor + " em estoque");
+        return (" Há " + qtd + " unidades do livro " + titulo + " do autor " + autor + " em estoque");
     }
 }
