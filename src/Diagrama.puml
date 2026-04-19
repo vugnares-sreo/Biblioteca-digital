@@ -1,0 +1,44 @@
+@startuml
+
+' Classes e atributos 
+class Livro {
+    - titulo : String
+    - autor : String
+    - isbn : long
+    - qtd : int
+    - emprestado : int
+}
+
+class Leitor {
+    - Usuario : String
+    - ID : int
+    - livroAlugas : Livro
+}
+
+class Biblioteca {
+    ' sem atributos definidos
+}
+
+class Catalago extends JFrame {
+    ' interface gráfica do catálogo
+}
+
+class Principal extends JFrame {
+    ' interface gráfica principal
+}
+
+class Main {
+    + main(args : String[]) : void
+}
+
+' Heranças
+Catalago --|> JFrame
+Principal --|> JFrame
+
+' Associações
+Leitor --> Livro
+Main --> Principal
+Biblioteca --> Livro
+Biblioteca --> Leitor
+
+@enduml
