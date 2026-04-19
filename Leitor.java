@@ -33,9 +33,6 @@ public class Leitor{
         }
     }
 
-    //Sei la pra que precisa disso mas botei pq o mano do youtube disse que era bom ter
-    //é pra manipular melhor man
-
         public String getUsuario() {
         return Usuario;
     }
