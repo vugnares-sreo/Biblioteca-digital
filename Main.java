@@ -24,7 +24,7 @@ public class Main{
             int a = S.nextInt();
 
             if (a == 1){
-                S.nextLine(); // Consumir a quebra de linha pendente do nextInt()
+                S.nextLine();
                 
                 System.out.println("Escreva seu nome:");
                 String leitorAblible = S.nextLine(); 
@@ -49,7 +49,7 @@ public class Main{
                 else {
                     System.out.println("\nUsuário não encontrado. Cadastrando...\n");
 
-                    leitor = new Leitor(leitorAblible, id); //Cria o ze
+                    leitor = new Leitor(leitorAblible, id);
                     biblioteca.addLeitor(leitor);
                     id++;
 
@@ -66,12 +66,10 @@ public class Main{
                 }
             }
 
-            //Acaba o 1 aqui
-
             else if (a == 2){
                 S.nextLine();
                 System.out.println("\nEscreva seu nome:");
-                String leitorAblible = S.nextLine(); //estou curingando JSKFNANDFUOASP
+                String leitorAblible = S.nextLine();
                 Leitor leitor = biblioteca.pesquisarLeitor(leitorAblible);
 
                 if (leitor != null) {
@@ -82,8 +80,6 @@ public class Main{
                     System.out.println("\nUsuario nao encontrado!");
                 }
             }
-
-            //O 2 é bem menor do que eu imaginava...
 
             else if(a == 3){
                 System.out.println("Catálogo de Livros:");
@@ -100,11 +96,11 @@ public class Main{
 
             else if (a == 4) {
                 biblioteca.gerarRelatorioLivrosEmprestados();
-                biblioteca.gerarRelatorioUsuariosAtivos(); //Negocio chato do krai
+                biblioteca.gerarRelatorioUsuariosAtivos();
             }
 
-            else if(a == 69){
-                break; //Condicao pra fechar o laco, botei pq se nao da erro
+            else if(a == 0){
+                break;
             }
 
             else{
