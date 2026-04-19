@@ -40,8 +40,6 @@ public class Biblioteca{
         return null;
     }
 
-    //Vi agora que precisa disso, nam
-
     public void gerarRelatorioLivrosEmprestados() {
     int totalEmprestados = 0;
     System.out.println("=== Livros Emprestados ===");
@@ -70,9 +68,6 @@ public class Biblioteca{
 
         System.out.println("Total de usuários ativos: " + ativos);
     }   
-
-
-    //Metodos get set
 
     public void setLeitores(ArrayList<Leitor> leitores){
         this.leitores = leitores;
