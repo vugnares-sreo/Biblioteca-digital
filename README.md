@@ -1,2 +1,29 @@
-# Trabalho---Biblioteca-digital
-trabalho do grupo composto por: Heitor Lisboa, Gabriel Endrel, Antonio Phillipe, Pedro Jerônimo, Kaiser Silva e Luís Felipe
+# Sistema de biblioteca (java)
+
+Sistema de gerenciamento de biblioteca desenvolvido em Java, com foco em organização de acervo e controle de empréstimos.
+
+## Funcionalidades
+- Cadastro e gerenciamento de livros
+- Registro e controle de usuários
+- Sistema de empréstimos e devoluções
+- Listagem e organização do acervo
+
+## Tecnologias
+- Java
+- Programação Orientada a Objetos (POO)
+
+## Conceitos aplicados
+- Encapsulamento
+- Herança e polimorfismo
+- Separação de responsabilidades entre classes
+- Manipulação de coleções
+
+## Objetivo
+Aplicar conceitos de programação orientada a objetos na construção de um sistema organizado e funcional para gerenciamento de biblioteca.
+
+## Execução
+1. Compile os arquivos Java
+2. Execute a classe principal
+
+## Contexto
+Projeto acadêmico desenvolvido no IFRN em trabalho colaborativo.
