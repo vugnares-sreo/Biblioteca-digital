@@ -24,7 +24,7 @@ Aplicar conceitos de programação orientada a objetos na construção de um sis
 ## Execução
 1. Baixe a paste de arquivo no formato .zip
 2. Extraia o .zip instalado
-3. Execute o Login.java
+3. Execute o Login.java na pasta src
 
 ## Contexto
 Projeto acadêmico desenvolvido no IFRN em trabalho colaborativo.
